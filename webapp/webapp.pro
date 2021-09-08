@@ -1,9 +1,14 @@
 QT += webengine webenginewidgets
 
-CONFIG += c++11
+CONFIG += c++11 link_pkgconfig
+
+PKGCONFIG += alsa
 
 HEADERS += \
-	eventfilter.h
+	webengineview.h \
+	volume.h
+
 SOURCES += \
 	main.cpp \
-	eventfilter.cpp
+	webengineview.cpp \
+	volume.cpp
