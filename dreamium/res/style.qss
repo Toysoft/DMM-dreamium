@@ -1,0 +1,22 @@
+QProgressBar {
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 0px;
+    color: white;
+    font: 24pt;
+    padding: 2px
+}
+
+QProgressBar::chunk {
+    background-color: #2596be;
+    width: 1px;
+}
+
+QLabel {
+    background-color: black;
+    color: white;
+    font: 24pt;
+    border-radius: 0px;
+    border: 2px solid white;
+    padding: 2px;
+}

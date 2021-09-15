@@ -32,4 +32,5 @@ public:
     void hideUi();
 protected Q_SLOTS:
     void loadFinished(bool ok);
+    void windowCloseRequested();
 };

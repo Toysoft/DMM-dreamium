@@ -36,6 +36,7 @@ WebEngineView::WebEngineView(QApplication* app, QWidget *parent)
 
     connect(m_volumeTimer, &QTimer::timeout, this, &WebEngineView::hideVolumebar);    
     connect(this, &QWebEngineView::loadFinished, this, &WebEngineView::loadFinished);
+    connect(page(), &QWebEnginePage::windowCloseRequested, this, &WebEngineView::windowCloseRequested);
 
     m_app->installEventFilter(this);
 }
@@ -102,4 +103,9 @@ void WebEngineView::onKeyBack()
 
 void WebEngineView::loadFinished(bool ok)
 {
+}
+
+void WebEngineView::windowCloseRequested()
+{
+    qApp->exit(0);
 }
