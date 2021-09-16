@@ -77,9 +77,18 @@ bool WebEngineView::eventFilter(QObject *obj, QEvent *event)
 	return false;
 }
 
-void WebEngineView::onVolumeChanged(int value)
+void WebEngineView::onVolumeChanged(int volume)
 {
-    m_volumebar->setValue(value);
+    if (volume < 0) {
+        m_volumebar->setValue(0);
+        m_volumebar->setFormat("not available!");
+    } else {
+        m_volumebar->setValue(volume);
+        if (m_volume->isMuted())
+            m_volumebar->setFormat("MUTED");
+        else
+            m_volumebar->setFormat("%p%");
+    }
     m_volumebar->show();
     m_volumeTimer->start(2000);
 }

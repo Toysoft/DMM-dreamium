@@ -21,15 +21,17 @@ class Volume : public QObject
     long m_min;
     long m_max;
 
-    void initMixer();
+    void init();
+    void reset();
 
     int get();
     void set(int value);
-    bool isMuted();
 public:
     Volume(WebEngineView* webView);
     ~Volume();
 
+    bool available();
+    bool isMuted();
     bool toggleMute();
     void up();
     void down();

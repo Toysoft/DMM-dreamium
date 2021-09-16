@@ -27,7 +27,7 @@ public:
     bool eventFilter(QObject *obj, QEvent *event);
 
     void onKeyBack();
-    void onVolumeChanged(int value);
+    void onVolumeChanged(int volume);
     void hideVolumebar();
     void hideUi();
 protected Q_SLOTS:
