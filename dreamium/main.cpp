@@ -9,6 +9,7 @@
 #include <QtWebEngine>
 #include <QWebEngineSettings>
 #include <QWebEngineProfile>
+#include <QtGlobal>
 
 #include "webengineview.h"
 
@@ -31,13 +32,17 @@ void setupWebengine(QString ua)
 {
     QWebEngineProfile::defaultProfile()->setHttpUserAgent(ua);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::AllowRunningInsecureContent, true);
-//    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::FocusOnNavigationEnabled, true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::FullScreenSupportEnabled, true);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
-//    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PlaybackRequiresUserGesture, false);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::ShowScrollBars, false);
     QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::SpatialNavigationEnabled, true);
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::PlaybackRequiresUserGesture, false);
+#endif
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
+    QWebEngineSettings::defaultSettings()->setAttribute(QWebEngineSettings::DnsPrefetchEnabled, true);
+#endif
 }
 
 int main(int argc, char *argv[])
